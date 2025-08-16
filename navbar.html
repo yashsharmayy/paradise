@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navigation Bar</title>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+
+      <!-- Logo -->
+      <div class="logo">
+        <img src="./images/logo.png" alt="Logo" />
+      </div>
+
+      <!-- Navigation -->
+      <nav class="nav">
+        <a href="./index.html" data-i18n="header.home">Home</a>
+        <a href="./about.html" data-i18n="header.about">About</a>
+        <a href="./rooms.html" data-i18n="header.rooms">Rooms</a>
+        <a href="./contact.html" data-i18n="header.contact">Contact</a>
+
+        <button class="lang-button" id="toggleLang">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-languages">
+            <path d="m5 8 6 6"></path>
+            <path d="m4 14 6-6 2-3"></path>
+            <path d="M2 5h12"></path>
+            <path d="M7 2h1"></path>
+            <path d="m22 22-5-10-5 10"></path>
+            <path d="M14 18h6"></path>
+          </svg>
+          <span id="langText">हिंदी</span>
+        </button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Load language logic -->
+    <script>
+    fetch('./html/nav.html')
+        .then(res => res.text())
+        .then(data => {
+        document.getElementById('nav-placeholder').innerHTML = data;
+        })
+        .then(() => {
+        const lang = localStorage.getItem("language") || "english";
+        applyLanguage(lang);
+        });
+    </script>
+    <script src="./js/lang.js"></script>
+</body>
+</html>

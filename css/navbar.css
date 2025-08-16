@@ -1,0 +1,201 @@
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  color: #000;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: #0a2342; /* navyish */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+  color: #e29416; /* goldish */
+  transform: scale(1.05);
+}
+
+/* Header styles */
+.header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Sticky header shrink effect */
+.header.scrolled {
+  background: #0a2342;
+  border-bottom: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+.header.scrolled .nav a {
+  color: white;
+}
+.header.scrolled .nav a:hover {
+  color: #e29416;
+}
+.header.scrolled .lang-button {
+  border: 1px solid #e29416;
+  color: white;
+}
+.header.scrolled .lang-button:hover {
+  background-color: #e29416;
+  color: #0a2342;
+}
+
+.container {
+  max-width: 92%;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+/* Logo */
+.logo img {
+  height: 90px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.08);
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav a {
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Fancy underline animation */
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #e29416;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Language button */
+.lang-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #000;
+  transition: all 0.3s ease-in-out;
+  margin-left: 50px;
+}
+
+.lang-button:hover {
+  background-color: #e7ac4d;
+  color: #fff;
+  border-color: #e9a537;
+  transform: scale(1.05);
+}
+
+/* -------popup---------- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-content {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+  transform: scale(0.9);
+  opacity: 0;
+  animation: popupAppear 0.4s ease forwards;
+}
+
+.popup-content img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.popup-content img:hover {
+  transform: scale(1.03);
+}
+
+.close-popup {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.close-popup:hover {
+  transform: rotate(90deg);
+  color: #e29416;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popupAppear {
+  0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}

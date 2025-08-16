@@ -1,0 +1,58 @@
+<!-- one_room.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Room Details - Mahakal Bhakt Nivas</title>
+  <link rel="stylesheet" href="./one_room.css">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Details - Mahakal Bhakt Nivas</title>
+    <link rel="icon" href="./images/logo.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/one_room.css"/>
+    <link rel="stylesheet" href="./css/footer.css">
+
+
+</head>
+<body>
+      <div id="navbar-placeholder"></div>
+      <div id="room-detail"></div>
+
+      <div id="footer-placeholder"></div>
+  <script src="./js/room_details.js"></script>
+    <script>
+        fetch("navbar.html")
+            .then(res => res.text())
+            .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+            })
+            .then(() => {
+            const savedLang = localStorage.getItem("language") || "english";
+            applyLanguage(savedLang);
+
+            const langBtn = document.getElementById("toggleLang");
+            if (langBtn) {
+                langBtn.addEventListener("click", () => {
+                const current = localStorage.getItem("language") || "english";
+                const newLang = current === "english" ? "hindi" : "english";
+                applyLanguage(newLang);
+                });
+            }
+            });
+             fetch('footer.html')
+            .then(res => res.text())
+            .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+        });
+    </script>
+
+</body>
+</html>
