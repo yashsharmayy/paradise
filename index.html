@@ -21,7 +21,6 @@
 </head>
 <body>
     <div id="navbar-placeholder"></div>
-    <div id="popup-placeholder"></div>
     <div class="hero-section">
         <img src="./images/Hero-img.jpg" alt="Luxury Resort View">
         <div class="overlay"></div>
@@ -262,22 +261,7 @@
             document.getElementById("footer-placeholder").innerHTML = data;
         });
     </script>
-    <script>
-            fetch("popup.html")
-                .then(res => res.text())
-                .then(data => {
-                const placeholder = document.getElementById("popup-placeholder");
-                placeholder.innerHTML = data;
 
-                // 🔁 Re-run script inside popup.html
-                const popupScript = placeholder.querySelector("script");
-                if (popupScript) {
-                    const newScript = document.createElement("script");
-                    newScript.textContent = popupScript.textContent;
-                    document.body.appendChild(newScript);
-                }
-                });
-    </script>
     <script>
         window.addEventListener("load", () => {
         document.body.classList.add("loaded");
@@ -289,5 +273,6 @@
 
 </body>
 </html>
+
 
     
