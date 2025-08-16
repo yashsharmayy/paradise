@@ -213,26 +213,7 @@
     <div id="footer-placeholder"></div>
     
     <script src="./js/lang.js"></script> <!-- must load lang.js BEFORE you use applyLanguage() -->
-    <script>
-        fetch("navbar.html")
-            .then(res => res.text())
-            .then(data => {
-            document.getElementById("navbar-placeholder").innerHTML = data;
-            })
-            .then(() => {
-            const savedLang = localStorage.getItem("language") || "english";
-            applyLanguage(savedLang);
 
-            const langBtn = document.getElementById("toggleLang");
-            if (langBtn) {
-                langBtn.addEventListener("click", () => {
-                const current = localStorage.getItem("language") || "english";
-                const newLang = current === "english" ? "hindi" : "english";
-                applyLanguage(newLang);
-                });
-            }
-            });
-    </script>
     <script>
         fetch("navbar.html")
             .then(res => res.text())
@@ -273,4 +254,5 @@
 
 
     
+
 
